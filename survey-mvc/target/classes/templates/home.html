@@ -5,5 +5,18 @@
 </head>
 <body>
     <p th:text="Home">Home</p>
+
+    <div id="SurveyQuestions">
+        <ul>
+            <li th:each="question : ${questionList}">
+                <p th:text="${question.questionText}"></p>
+                <ul>
+                    <li th:each="option : ${question.optionMap}">
+                        <input type="radio"  th:value="${option.key}" th:text="${option.value}" name="question1"/>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
