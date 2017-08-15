@@ -50,4 +50,9 @@ public class QuestionTest {
         assertNotNull("List of options must not be null", question.getOptionMap());
     }
 
+    @Test
+    public void selectedOptionNull() {
+        assertNull("Selected option must be null", question.getSelectedOption());
+    }
+
 }

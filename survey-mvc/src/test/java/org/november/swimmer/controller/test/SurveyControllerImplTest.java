@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -25,6 +26,14 @@ public class SurveyControllerImplTest {
     public void displaySurveyHome() throws Exception {
         MvcResult result = mockMvc.perform(get("/home")).andExpect(status().isOk()).andReturn();
 
-        assertNotNull("Question model attribute must not be null", result.getModelAndView().getModel().get("questionList"));
+        assertNotNull("View not found", result);
     }
+
+    @Test
+    public void postSurvey() throws Exception {
+        MvcResult result = mockMvc.perform(post("/submitSurvey")).andExpect(status().isOk()).andReturn();
+
+        assertNotNull("View not found", result);
+    }
+
 }

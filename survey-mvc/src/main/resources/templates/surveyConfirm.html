@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Survey</title>
+</head>
+<body>
+<p>Confirm</p>
+
+<!--<p th:text="${surveyForm.questionMap[1].selectedOption}"/>-->
+
+<ul th:each="question : *{surveyForm.questionMap}">
+    <li>
+        <p th:text="${question.value.selectedOption}"/>
+
+    </li>
+</ul>
+</body>
+</html>

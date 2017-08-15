@@ -6,7 +6,8 @@ import java.util.Map;
 public class Question {
 
     private String questionText;
-    private Map<String, String> optionMap = new HashMap<>();
+    private Map<String, String> optionMap = new HashMap();
+    private String selectedOption;
 
     public Question(String questionText, String choice_a, String choice_b, String choice_c, String choice_d, String choice_e) {
         this.questionText = questionText;
@@ -24,4 +25,13 @@ public class Question {
     public Map<String, String> getOptionMap() {
         return optionMap;
     }
+
+    public String getSelectedOption() {
+        return selectedOption;
+    }
+
+    public void setSelectedOption(String selectedOption) {
+        this.selectedOption = selectedOption;
+    }
+
 }

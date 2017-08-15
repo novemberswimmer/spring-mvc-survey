@@ -6,17 +6,23 @@
 <body>
     <p th:text="Home">Home</p>
 
-    <div id="SurveyQuestions">
-        <ul>
-            <li th:each="question : ${questionList}">
-                <p th:text="${question.questionText}"></p>
-                <ul>
-                    <li th:each="option : ${question.optionMap}">
-                        <input type="radio"  th:value="${option.key}" th:text="${option.value}" name="question1"/>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    <form action="#" th:action="@{/submitSurvey}" th:object="${surveyForm}" method="post">
+        <div id="SurveyQuestions">
+            <ul>
+                <li th:each="question : *{questionMap}">
+                    <p th:text="${question.value.questionText}"></p>
+                    <ul>
+                        <li th:each="option : ${question.value.optionMap}">
+                            <input type="radio" th:field="*{questionMap[__${question.key}__].selectedOption}" th:value="${option.key}"/>
+                            <label th:for="${'questionMap' + question.key + '.selectedOption1'} " th:text="${option.value}"/>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <button type="submit" name="submitSurvey" th:text="#{survey.submit.button}">Submit</button>
+
+    </form>
 </body>
 </html>
