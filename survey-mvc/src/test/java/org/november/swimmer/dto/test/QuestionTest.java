@@ -1,4 +1,4 @@
-package org.november.swimmer.domain.test;
+package org.november.swimmer.dto.test;
 
 import static org.junit.Assert.*;
 

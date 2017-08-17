@@ -1,5 +1,7 @@
 package org.november.swimmer.dto;
 
+import org.november.swimmer.util.QuestionBuilder;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ public class SurveyForm {
 
     private String sid;
     private Map<Integer,Question> questionMap;
+    private QuestionBuilder questionBuilder = new QuestionBuilder();
 
     public SurveyForm(){
         questionMap = new HashMap<Integer, Question>();
@@ -15,14 +18,27 @@ public class SurveyForm {
     }
 
     private void putFirstQuestion() {
-        Question question = new Question("Question 1","Choice A", "Choice B", "Choice C", "Choice D", "Choice E");
+        questionBuilder.setQuestion("Question 1")
+                .setOptionA("Choice A")
+                .setOptionB("Choice B")
+                .setOptionC("Choice C")
+                .setOptionD("Choice D")
+                .setOptionE("Choice E");
+
+        Question question = questionBuilder.build();
         question.setSelectedOption("A");
         questionMap.put(1,question);
     }
 
     private void putSecondQuestion() {
-        Question question = new Question("Question 2","Choice A", "Choice B", "Choice C", "Choice D", "Choice E");
-        question.setSelectedOption("A");
+        questionBuilder.setQuestion("Question 2")
+                .setOptionA("Choice F")
+                .setOptionB("Choice G")
+                .setOptionC("Choice H")
+                .setOptionD("Choice I")
+                .setOptionE("Choice J");
+
+        Question question = questionBuilder.build();
         questionMap.put(2,question);
     }
 

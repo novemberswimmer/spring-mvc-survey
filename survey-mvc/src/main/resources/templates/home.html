@@ -12,11 +12,14 @@
                 <li th:each="question : *{questionMap}">
                     <p th:text="${question.value.questionText}"></p>
                     <ul>
-                        <li th:each="option : ${question.value.optionMap}">
-                            <input type="radio" th:field="*{questionMap[__${question.key}__].selectedOption}" th:value="${option.key}"/>
-                            <label th:for="${'questionMap' + question.key + '.selectedOption1'} " th:text="${option.value}"/>
+                        <fieldset class="radiogroup">
+                            <legend>Select your answer</legend>
+                            <li th:each="option,iterStat  : ${question.value.optionMap}">
+                                <input type="radio" th:field="*{questionMap[__${question.key}__].selectedOption}" th:value="${option.key}"/>
+                                <label th:for="${'questionMap' + question.key + '.selectedOption' + iterStat.count} " th:text="${option.value}"/>
 
-                        </li>
+                            </li>
+                        </fieldset>
                     </ul>
                 </li>
             </ul>
